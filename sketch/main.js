@@ -38,27 +38,26 @@ function init() {
       y2: centerY + i * spacing,
       offset: 0,
       velocity: 0,
-      glow: 0, // 글로우 효과 강도
-      baseColor: color(255), // 기본 색상 (흰색)
-      shapeType: getShapeForRow(i), // 각 줄에 해당하는 도형 설정
+      glow: 0,
+      baseColor: color(255),
+      shapeType: getShapeForRow(i),
     });
   }
 }
 
 function getShapeForRow(i) {
-  // 각 줄에 해당하는 도형 타입 설정 (두 줄에 한 종류)
   if (i <= -2) {
-    return 'circle'; // 첫 번째 줄은 동그라미
+    return 'circle'; // 첫 번째 줄 동그라미
   } else if (i <= -1) {
-    return 'triangle'; // 두 번째 줄은 삼각형
+    return 'triangle'; // 두 번째 줄 삼각형
   } else if (i <= 0) {
-    return 'square'; // 세 번째 줄은 네모
+    return 'square'; // 세 번째 줄 네모
   } else if (i <= 1) {
-    return 'ellipse'; // 네 번째 줄은 타원형
+    return 'ellipse'; // 네 번째 줄 타원
   } else if (i <= 2) {
-    return 'star'; // 다섯 번째 줄은 별 모양
+    return 'star'; // 다섯 번째 줄 별
   } else {
-    return 'arch'; // 여섯 번째 줄은 아치형 곡선
+    return 'arch'; // 여섯 번째 줄 아치형 곡선
   }
 }
 
@@ -79,14 +78,12 @@ function draw() {
         createShapeForString(i, string);
       }
 
-      // 진동 중일 때 줄 색상 변경
       stringColor = getPastelColor(i);
-      string.glow = 255; // 글로우 효과 최대치
+      string.glow = 255;
     } else {
       string.offset = 0;
       string.velocity = 0;
 
-      // 글로우 효과 서서히 감소
       string.glow = max(0, string.glow - 5);
     }
 
@@ -121,11 +118,11 @@ function draw() {
   for (let i = 0; i < particles.length; i++) {
     particles[i].show();
   }
-  particles = particles.filter((p) => p.lifetime > 0); // 수명이 다한 파티클 제거
+  particles = particles.filter((p) => p.lifetime > 0);
 }
 
 function createShapeForString(index, string) {
-  const shapeType = string.shapeType; // 각 줄에 설정된 도형 타입 사용
+  const shapeType = string.shapeType;
   const shapeColor = getPastelColor(index);
   const size = random(10, 30);
   const lifetime = random(2, 4);
@@ -167,18 +164,18 @@ function drawShape(shape) {
       rect(shape.x, shape.y, shape.size, shape.size);
       break;
     case 'ellipse':
-      ellipse(shape.x, shape.y, shape.size * 1.5, shape.size); // 타원형
+      ellipse(shape.x, shape.y, shape.size * 1.5, shape.size);
       break;
     case 'star':
-      drawStar(shape.x, shape.y, shape.size / 2, shape.size, 5); // 별 모양
+      drawStar(shape.x, shape.y, shape.size / 2, shape.size, 5);
       break;
     case 'arch':
-      drawArch(shape.x, shape.y, shape.size); // 아치형 곡선
+      drawArch(shape.x, shape.y, shape.size);
       break;
   }
 }
 
-// 별 모양을 그리는 함수
+// 별 그리기기
 function drawStar(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
@@ -194,15 +191,14 @@ function drawStar(x, y, radius1, radius2, npoints) {
   endShape(CLOSE);
 }
 
-// 아치형 곡선을 그리는 함수
+// 아치형 곡선 그리기
 function drawArch(x, y, size) {
   noFill();
-  stroke(0, 255, 255); // 민트색으로 아치형 곡선 색상 설정
+  stroke(0, 255, 255);
   strokeWeight(2);
   beginShape();
   for (let i = -size / 2; i <= size / 2; i++) {
-    // 아치형 곡선 방정식
-    let yOffset = sqrt(size * size - i * i); // 원의 방정식 사용
+    let yOffset = sqrt(size * size - i * i);
     vertex(x + i, y - yOffset);
   }
   endShape();
@@ -211,33 +207,32 @@ function drawArch(x, y, size) {
 class Particle {
   constructor() {
     this.pos = createVector(random(width), random(height));
-    this.lifetime = 3; // 파티클 수명 (초)
+    this.lifetime = 3;
   }
   show() {
     this.lifetime -= deltaTime / 1000;
     noStroke();
     fill(255, 255 * (this.lifetime / 3));
 
-    // 파티클 크기 줄이기 (기존 4에서 크기 변경)
-    ellipse(this.pos.x, this.pos.y, 2); // 크기를 2로 줄임
+    ellipse(this.pos.x, this.pos.y, 2);
   }
 }
 
 // 줄 및 도형에 사용할 파스텔 색상 생성
 function getPastelColor(index) {
   const baseColors = [
-    [255, 230, 150], // 노란색 계열
-    [255, 180, 180], // 빨간색 계열
-    [180, 180, 255], // 파란색 계열
-    [180, 180, 255], // 보라색 계열
-    [180, 255, 180], // 초록색 계열
+    [255, 230, 150], // 노란색
+    [255, 180, 180], // 빨간색
+    [180, 180, 255], // 파란색
+    [180, 180, 255], // 보라색
+    [180, 255, 180], // 초록색
     [0, 255, 255], // 민트색
   ];
   const base = baseColors[index % baseColors.length];
 
   // 6번째 줄일 경우 민트색 반환
   if (index === 3) {
-    return color(0, 255, 255, 200); // 민트색 (RGB: 0, 255, 255)
+    return color(0, 255, 255, 200);
   }
 
   return color(base[0], base[1], base[2], 200);
