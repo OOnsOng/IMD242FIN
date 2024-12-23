@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="./style/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
     <!-- !!!!!!!!!! 필요에 따라 아래를 수정하시오 !!!!!!!!!! -->
     <script src="./sketch/main.js" defer></script>
     <!-- !!!!!!!!!! 필요에 따라 위를 수정하시오 !!!!!!!!!! -->
@@ -53,7 +54,9 @@
             동그라미로 기쁨을, 두번째 줄은 빨간색 삼각형으로 화남을, 세번째 줄은
             파란색 사각형으로 슬픔을, 네번째 줄은 보라색 타원으로 소심함을
             표현합니다. 그리고 다섯번째 줄은 초록색 별로 까칠함을, 마지막
-            여섯번째 줄은 민트색 곡선으로 부러움을 나타냅니다.
+            여섯번째 줄은 민트색 곡선으로 부러움을 나타냅니다. 엄지와 검지를
+            붙여 직접 줄을 튕기며 기타를 연주해볼 수 있고, 마우스로도
+            가능합니다.
           </p>
           <p>
             배경에는 작은 파티클이 지속적으로 반짝이고, 기타줄과 도형에는 네온
@@ -69,25 +72,37 @@
         <ol class="references">
           <!-- !!!!!!!!!! 필요에 따라 아래를 수정하시오 !!!!!!!!!! -->
           <li>
-            Patt Vira.
-            <span>p5.js Coding Tutorial | Fireworks (Particle Systems).</span>
-            YouTube, 2024. 최종접근일 2024.12.16.
-            <a
-              href="https://www.youtube.com/watch?v=YPKidHmretc"
-              target="_blank"
-              >https://www.youtube.com/watch?v=YPKidHmretc</a
-            >
-          </li>
-          <!-- <li>
             Colorful Coding.
-            <span>Code an Audio Visualizer in p5js (from scratch).</span>
+            <span
+              >Code an Audio Visualizer in p5js (from scratch) | Coding Project
+              #17.</span
+            >
             YouTube, 2021. 최종접근일 2024.12.16.
             <a
               href="https://www.youtube.com/watch?v=uk96O7N1Yo0"
               target="_blank"
               >https://www.youtube.com/watch?v=uk96O7N1Yo0</a
             >
-          </li> -->
+          </li>
+          <li>
+            The Coding Train.
+            <span>Pose Estimation with ml5.js.</span>
+            YouTube, 2024. 최종접근일 2024.12.19.
+            <a
+              href="https://www.youtube.com/watch?v=T99fNXTUUaQ&t=429s"
+              target="_blank"
+              >https://www.youtube.com/watch?v=T99fNXTUUaQ&t=429s</a
+            >
+          </li>
+          <li>
+            The Coding Train.
+            <span>Hand Pose Detection with ml5.js.</span>
+            YouTube, 2024. 최종접근일 2024.12.23.
+            <a href="https://www.youtube.com/watch?v=vfNHdVbE-l4&t=257s"
+              >https://www.youtube.com/watch?v=vfNHdVbE-l4&t=257s</a
+            >
+          </li>
+
           <!-- <li>
             [작가아이디]. <span>작품제목.</span> [플랫폼이름], [공개년도].
             최종접근일 2024.12.09.
@@ -105,7 +120,7 @@
             [발행일]. 최종접근일 2024.12.09
             <a href="" target="_blank">URL</a>
           </li> -->
-          <li>
+          <!-- <li>
             <span>The Superb Generative Gradient Art by Martin Naumann.</span>
             Design You Trust. 최종접근일 2024.12.09
             <a
@@ -113,7 +128,7 @@
               target="_blank"
               >https://designyoutrust.com/2024/08/the-superb-generative-gradient-art-by-martin-naumann/</a
             >
-          </li>
+          </li> -->
           <!-- !!!!!!!!!! 필요에 따라 위를 수정하시오 !!!!!!!!!! -->
         </ol>
       </div>
